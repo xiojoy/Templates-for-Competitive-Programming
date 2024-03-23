@@ -1,18 +1,18 @@
 确定模数 $P$ 后， $StaticModInt$ 会在运算操作的过程中自动取模。
 
-$a.raw(val)$：唯一一个不取模的运算，直接返回 $val$ ，用于确定结果不超过模数时加快赋值，时间复杂度：$O(1)$ 。
+$a.raw(val)$：唯一一个不取模的运算，直接返回 $val$，用于确定结果不超过模数时加快赋值，时间复杂度： $O(1)$。
 
-$a.pow(val)$：返回 $a^{val}$ 次幂，时间复杂度：$O(logn)$​ 。
+$a.pow(val)$：返回 $a^{val}$ 次幂，时间复杂度： $O(logn)$​。
 
 $a.inv()$：返回 $a$ 关于 $P$ 的逆元，时间复杂度：$O(logn)$ 。
 
-$a.inv\_Fermat()$：通过快速幂返回 $a$ 关于 $P$ 的逆元，时间复杂度：$O(logn)$ 。
+$a.inv\\_Fermat()$：通过快速幂返回 $a$ 关于 $P$ 的逆元，时间复杂度： $O(logn)$。
 
-$a.inv\_exgcd()$：通过扩欧返回 $a$ 关于 $P$ 的逆元，时间复杂度：$O(logn)$ 。
+$a.inv\\_exgcd()$：通过扩欧返回 $a$ 关于 $P$ 的逆元，时间复杂度： $O(logn)$。
 
 其余运算操作均与 $int$ 中的释义相同。
 
-mint32
+$32$ 位静态自取模整型：
 ```C++
 template <uint32_t P, bool IsPrime, typename = typename std::enable_if<(P > 1 && P < uint32_t(1) << 31)>::type>
 struct StaticModInt32 {
@@ -116,7 +116,7 @@ Ostream &operator<<(Ostream &os, const StaticModInt32<P, IsPrime> &x) { return o
 using mint998244353 = StaticModInt32<998244353, true>;
 using mint1000000007 = StaticModInt32<1000000007, true>;
 ```
-mint64
+$64$ 位静态自取模整型：
 ```C++
 template <uint64_t P, bool IsPrime, typename = typename std::enable_if<(P > 1 && P < uint64_t(1) << 63)>::type>
 struct StaticModInt64 {
