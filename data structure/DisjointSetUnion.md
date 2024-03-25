@@ -61,4 +61,4 @@ public:
 
 例题：
 
-[ABC049](https://atcoder.jp/contests/abc049/tasks/arc065_b)
+[ABC_049_D](https://atcoder.jp/contests/abc049/tasks/arc065_b)
