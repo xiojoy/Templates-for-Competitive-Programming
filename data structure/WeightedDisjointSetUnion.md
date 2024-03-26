@@ -45,7 +45,7 @@ public:
         if (x == y) {
             return false;
         }
-        d[fy] = d[x] + d[y] + w;
+        d[fy] = d[x] + w - d[y];
         siz[fx] += siz[fy];
         f[fy] = fx;
         return true;
@@ -56,7 +56,7 @@ public:
     }
 
     int dist(int x, int y) {
-        return same(x, y) ? abs(d[x] - d[y]) : -1;
+        return same(x, y) ? d[y] - d[x] : -114514;
     }
 };
 ```
