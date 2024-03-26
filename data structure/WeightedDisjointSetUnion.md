@@ -63,5 +63,7 @@ public:
 
 例题：
 
-[CEOI1999](https://www.luogu.com.cn/problem/P5937)
+[P5937](https://www.luogu.com.cn/problem/P5937)
+
+[P2024](https://www.luogu.com.cn/problem/P2024)
 
