@@ -1,6 +1,10 @@
 $WeighedDisjointSetUnion$​ 在 [DisjointSetUnion](https://github.com/xiojoy/Templates-for-Competitive-Programming/blob/main/data%20structure/DisjointSetUnion.md) 的基础上使树边带权，可以维护更多额外的信息，如子节点和父节点的关系等， $d[i]$ 表示点 $i$ 到其所在树的根节点的距离。
 
-$dist(x, y)$： $x$ 与 $y$ 所在集合相同时返回两点间的距离，否则返回 $-1$，时间复杂度与 $find$ 相同。
+以下操作时间复杂度均与 $find$ 相同。
+
+$merge(x, y, w)$：在 $x$ 和 $y$ 之间加一条权为 $w$ 的边。
+
+$dist(x, y)$： $x$ 与 $y$ 所在集合相同时返回两点间的距离，否则返回 $-1$。
 
 未解释的操作释义均与 $DisjointSetUnion$ 中的相同或额外维护了 $d$ 的权值。
 
@@ -35,15 +39,15 @@ public:
         return find(x) == find(y);
     }
     
-    bool merge(int x, int y) {
-        x = find(x);
-        y = find(y);
+    bool merge(int x, int y, int w) {
+        int fx = find(x);
+        int fy = find(y);
         if (x == y) {
             return false;
         }
-        d[y] += siz[x];
-        siz[x] += siz[y];
-        f[y] = x;
+        d[fy] = d[x] + d[y] + w;
+        siz[fx] += siz[fy];
+        f[fy] = fx;
         return true;
     }
 
