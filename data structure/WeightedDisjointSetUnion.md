@@ -10,8 +10,8 @@ private:
     vector<int> f, siz;
     vector<int> d;
 public:
-    DisjointSetUnion() {}
-    DisjointSetUnion(int n) {
+    WeightedDisjointSetUnion() {}
+    WeightedDisjointSetUnion(int n) {
         init(n);
     }
     
