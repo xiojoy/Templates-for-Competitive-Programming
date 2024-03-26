@@ -5,7 +5,7 @@ $dist(x, y)$： $x$ 与 $y$ 所在集合相同时返回两点间的距离，否�
 未解释的操作释义均与 $DisjointSetUnion$ 中的相同或额外维护了 $d$ 的权值。
 
 ```C++
-class DisjointSetUnion {
+class WeightedDisjointSetUnion {
 private:
     vector<int> f, siz;
     vector<int> d;
