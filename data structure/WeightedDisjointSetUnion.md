@@ -1,4 +1,4 @@
-$WeighedDisjointSetUnion$​ 在 [DisjointSetUnion](https://github.com/xiojoy/Templates-for-Competitive-Programming/blob/main/data%20structure/DisjointSetUnion.md) 的基础上使树边带权，可以维护更多额外的信息，如子节点和父节点的关系等， $d[i]$ 表示点 $i$ 到其所在树的根节点的距离。
+$WeighedDisjointSetUnion$ 在 [DisjointSetUnion](https://github.com/xiojoy/Templates-for-Competitive-Programming/blob/main/data%20structure/DisjointSetUnion.md) 的基础上使树边带权，可以维护更多额外的信息，如子节点和父节点的关系等， $d[i]$ 表示点 $i$ 到其所在树的根节点的距离。
 
 以下操作时间复杂度均与 $find$ 相同。
 
@@ -60,3 +60,8 @@ public:
     }
 };
 ```
+
+例题：
+
+[CEOI1999](https://www.luogu.com.cn/problem/P5937)
+
