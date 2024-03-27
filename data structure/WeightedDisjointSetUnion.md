@@ -2,7 +2,7 @@ $WeighedDisjointSetUnion$ 在 [DisjointSetUnion](https://github.com/xiojoy/Templ
 
 以下操作时间复杂度均与 $find$ 相同。
 
-$merge(x, y, w)$：在 $x$ 和 $y$ 之间加一条权为 $w$ 的边。
+$merge(x, y, w)$：在 $x$ 和 $y$ 之间加一条 $y$ 指向 $x$ 的权为 $w$ 的有向边（ $x$ 到 $y$ 的边权则为 $-w$）。
 
 $dist(x, y)$： $x$ 与 $y$ 所在集合相同时返回点 $y$ 到点 $x$ 的距离，否则返回 $-114514$。
 
