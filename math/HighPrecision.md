@@ -96,8 +96,8 @@ public:
 
 例题：
 
-[HDUOJ_1250](http://acm.hdu.edu.cn/showproblem.php?pid=1250)
+[HDU1250](http://acm.hdu.edu.cn/showproblem.php?pid=1250)
 
-[HDUOJ_5920](http://acm.hdu.edu.cn/showproblem.php?pid=5920)
+[HDU5920](http://acm.hdu.edu.cn/showproblem.php?pid=5920)
 
-[HDUOJ_1261](http://acm.hdu.edu.cn/showproblem.php?pid=1261)
+[HDU1261](http://acm.hdu.edu.cn/showproblem.php?pid=1261)
