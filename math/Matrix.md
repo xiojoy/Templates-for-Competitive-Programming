@@ -131,6 +131,7 @@ istream& operator>>(istream &in, Matrix<Tp> &x) {
 ```
 
 例题：
+
 [P1306](https://www.luogu.com.cn/problem/P1306)
 
 [P1962](https://www.luogu.com.cn/problem/P1962)
