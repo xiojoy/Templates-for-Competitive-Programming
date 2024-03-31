@@ -2,7 +2,11 @@ $Matrix$ 用于实现矩阵的基本运算，包括矩阵和数与矩阵间的�
 
 矩阵乘法（ $a \times b$ ）的时间复杂度： $O(nml)$，其余运算的复杂度： $O(nm)$。
 
-矩阵加减法应满足行列数分别相等，矩阵乘法应满足被乘矩阵的列数与乘矩阵的行数相等，支持矩阵直接输入和输出。
+矩阵快速幂（ $a^k$）的时间复杂度： $O(n^3logk)$。
+
+矩阵加减法应满足行列数分别相等，矩阵乘法应满足被乘矩阵的列数与乘矩阵的行数相等，矩阵快速幂应满足矩阵行列数相等。
+
+$Matrix$ 支持直接输入和输出矩阵。
 
 ```C++
 template<class Tp>
@@ -16,6 +20,9 @@ public:
         for (int i = 0; i < n; i++) {
             val[i][i] = 1;
         }
+    }
+    Matrix(const vector<vector<Tp>> &val) : n(val.size()), m(val[0].size()) {
+        this->val = val;
     }
     Matrix(const int &n, const int &m, const Tp &x = Tp()) : n(n), m(m) {
         val.assign(n, vector<Tp>(m, x));
@@ -75,7 +82,7 @@ public:
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 for (int k = 0; k < l; k++) {
-                    a.val[i][j] += val[i][j] * x.val[j][k];
+                    a.val[i][k] += val[i][j] * x.val[j][k];
                 }
             }
         }
@@ -90,6 +97,17 @@ public:
     }
     friend Matrix operator*(const Matrix &a, const Matrix &b) { 
         return Matrix(a) *= b; 
+    }
+    Matrix ksm(i64 k) {
+        Matrix res(n), a(*this);
+        while (k) {
+            if (k & 1) {
+                res *= a;
+            }
+            k >>= 1;
+            a *= a;
+        }
+        return res;
     }
 };
 template<typename Tp>
@@ -111,4 +129,3 @@ istream& operator>>(istream &in, Matrix<Tp> &x) {
     return in;
 }
 ```
-
