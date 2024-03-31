@@ -1,4 +1,4 @@
-$Matrix$ 用于实现矩阵的基本运算，包括矩阵和数与矩阵间的加减乘的运算。 $n$ 为矩阵 $a$ 的行数， $m$ 为矩阵 $a$ 的列数和矩阵 $b$ 的行数， $l$ 为矩阵 $b$​ 的列数。
+$Matrix$ 用于实现矩阵的基本运算，包括矩阵和数与矩阵间的加减乘的运算。 $n$ 为矩阵 $a$ 的行数， $m$ 为矩阵 $a$ 的列数和矩阵 $b$ 的行数， $l$ 为矩阵 $b$ 的列数。
 
 矩阵乘法（ $a \times b$ ）的时间复杂度： $O(nml)$，其余运算的复杂度： $O(nm)$。
 
@@ -129,3 +129,11 @@ istream& operator>>(istream &in, Matrix<Tp> &x) {
     return in;
 }
 ```
+
+例题：
+
+[P1306](https://www.luogu.com.cn/problem/P1306)
+
+[P1962](https://www.luogu.com.cn/problem/P1962)
+
+[P1939](https://www.luogu.com.cn/problem/P1939)
