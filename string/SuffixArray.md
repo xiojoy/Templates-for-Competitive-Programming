@@ -3,47 +3,47 @@
 求后缀数组的时间复杂度： $O(nlogn)$ 。
 
 ```C++
-    int n = s.size();
-    s = " " + s;
+int n = s.size();
+s = " " + s;
 
-    vector<int> sa(n + 1), rk(n + 1);
+vector<int> sa(n + 1), rk(n + 1);
+for (int i = 1; i <= n; i++) {
+    sa[i] = i;
+    rk[i] = s[i];
+}
+
+int rank = *max_element(ALL(s));
+auto count_sort = [&](int m, int k) {
+    vector<int> lsa = sa, cnt(m + 1);
     for (int i = 1; i <= n; i++) {
-        sa[i] = i;
-        rk[i] = s[i];
+        int j = lsa[i] + k;
+        cnt[rk[j > n ? 0 : j]]++;
     }
+    for (int i = 1; i <= m; i++) {
+        cnt[i] += cnt[i - 1];
+    }
+    for (int i = n; i >= 1; i--) {
+        int j = lsa[i] + k;
+        sa[cnt[rk[j > n ? 0 : j]]--] = lsa[i];
+    }
+};
 
-    int rank = *max_element(ALL(s));
-    auto count_sort = [&](int m, int k) {
-        vector<int> lsa = sa, cnt(m + 1);
-        for (int i = 1; i <= n; i++) {
-            int j = lsa[i] + k;
-            cnt[rk[j > n ? 0 : j]]++;
-        }
-        for (int i = 1; i <= m; i++) {
-            cnt[i] += cnt[i - 1];
-        }
-        for (int i = n; i >= 1; i--) {
-            int j = lsa[i] + k;
-            sa[cnt[rk[j > n ? 0 : j]]--] = lsa[i];
-        }
-    };
-
-    for (int k = 1; k < n; k <<= 1) {
-        count_sort(rank, k);
-        count_sort(rank, 0);
-        vector<int> las = rk;
-        int j = 0;
-        for (int i = 1; i <= n; i++) {
-            if (las[sa[i]] == las[sa[i - 1]] && las[sa[i] + k] == las[sa[i - 1] + k]) {
-                rk[sa[i]] = j;
-            } else {
-                rk[sa[i]] = ++j;
-            }
-        }
-        rank = j;
-        if (rank == n) {
-            break;
+for (int k = 1; k < n; k <<= 1) {
+    count_sort(rank, k);
+    count_sort(rank, 0);
+    vector<int> las = rk;
+    int j = 0;
+    for (int i = 1; i <= n; i++) {
+        if (las[sa[i]] == las[sa[i - 1]] && las[sa[i] + k] == las[sa[i - 1] + k]) {
+            rk[sa[i]] = j;
+        } else {
+            rk[sa[i]] = ++j;
         }
     }
+    rank = j;
+    if (rank == n) {
+        break;
+    }
+}
 ```
 
