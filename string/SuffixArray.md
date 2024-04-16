@@ -2,9 +2,9 @@
 
 $work(t)$：求后缀数组，时间复杂度： $O(nlogn)$。
 
-$get\_id(rank)$：求排名为 $rank$ 的后缀，时间复杂度：$O(1)$。
+$get\\_id(rank)$：求排名为 $rank$ 的后缀，时间复杂度： $O(1)$。
 
-$get\_rk(id)$：求后缀 $id$ 的排名，时间复杂度：$O(1)$。
+$get\\_rk(id)$：求后缀 $id$ 的排名，时间复杂度： $O(1)$。
 
 ```C++
 class SuffixArray {
