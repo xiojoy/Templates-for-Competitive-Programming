@@ -1,25 +1,33 @@
-后缀数组包括 $sa$ 和 $rk$，简记字符串 $s$ 的某个后缀为该后缀首字符的下标（从 $1$ 开始）， $sa[i]$ 表示在 $s$ 所有的后缀中排名为 $i$ （第 $i$ 小）的后缀， $rk[i]$ 表示后缀 $i$ 的排名， $n$ 为 $s$​ 的长度。
+后缀数组包括 $sa$ 和 $rk$，简记字符串 $s$ 的某个后缀为该后缀首字符的下标（从 $1$ 开始）， $sa[i]$ 表示在 $s$ 所有的后缀中排名为 $i$ （第 $i$ 小）的后缀， $rk[i]$ 表示后缀 $i$ 的排名， $n$ 为 $s$ 的长度， $h[i]$ 表示 $lcp(sa[i],sa[i - 1])$， $ST$ 为 [SparseTable](https://github.com/xiojoy/Templates-for-Competitive-Programming/blob/main/data%20structure/SparseTable.md)，用于高效求 $lcp$。
 
-$work(t)$：求后缀数组，时间复杂度： $O(nlogn)$。
+$work()$：求 $sa、rk、h$，时间复杂度： $O(nlogn)$。
 
-$get\\_id(rank)$：求排名为 $rank$ 的后缀，时间复杂度： $O(1)$。
-
-$get\\_rk(id)$：求后缀 $id$ 的排名，时间复杂度： $O(1)$。
+$lcp(x, y)$：求后缀 $x$ 和 $y$ 的最长公共前缀，时间复杂度： $O(1)$。
 
 ```C++
-class SuffixArray {
-private:
-    string s;
-    vector<int> sa, rk;
-public:
-    SuffixArray(){}
-    SuffixArray(const string &s) {
-        work(s);
+struct SuffixArray {
+    int n;
+    vector<int> s;
+    vector<int> sa, rk, h;
+    SparseTable ST;
+    
+    SuffixArray(){}        
+    SuffixArray(const string &t) {
+        n = t.size();
+        s.resize(n + 1);
+        for (int i = 1; i <= n; i++) {
+            s[i] = t[i - 1];
+        }
+        work();
     }
 
-    void work(const string &t) {
-        int n = t.size();
-        this->s = " " + t;
+    SuffixArray(const vector<int> &t) {
+        n = t.size() - 1;        
+        s = t;
+        work();
+    }
+
+    void work() {
         sa.resize(n + 1);
         rk.resize(n + 1);
         for (int i = 1; i <= n; i++) {
@@ -59,13 +67,31 @@ public:
                 break;
             }
         }
+
+        h.resize(n + 1);
+        for (int i = 1, j = 0; i <= n; i++) {
+            if (j) {
+                j--;
+            }
+            while (i + j <= n && sa[rk[i] - 1] + j <= n && s[i + j] == s[sa[rk[i] - 1] + j]) {
+                j++;
+            }
+            h[rk[i]] = j;
+        }
+        ST.init(h);
     }
 
-    int get_id(int rank) {
-        return sa[rank];
-    }
-    int get_rk(int id) {
-        return rk[id];
+    int lcp(int x, int y) {
+        if (x == y) {
+            return n - x + 1;
+        } else {
+            x = rk[x];
+            y = rk[y];
+            if (x > y) {
+                swap(x, y);
+            }
+            return ST.query(x + 1, y);
+        }
     }
 };
 ```
