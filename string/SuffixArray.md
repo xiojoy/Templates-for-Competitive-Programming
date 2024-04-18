@@ -95,3 +95,10 @@ struct SuffixArray {
     }
 };
 ```
+
+例题：
+
+[contest_41745_C](https://ac.nowcoder.com/acm/contest/41745/C)
+
+[P2852](https://www.luogu.com.cn/problem/P2852)
+
