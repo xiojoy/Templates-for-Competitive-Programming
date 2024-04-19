@@ -7,91 +7,50 @@ $lcp(x, y)$：求后缀 $x$ 和 $y$ 的最长公共前缀，时间复杂度： $
 ```C++
 struct SuffixArray {
     int n;
-    vector<int> s;
-    vector<int> sa, rk, h;
+    vector<int> s, sa, rk, h;
     SparseTable ST;
-    
     SuffixArray(){}        
     SuffixArray(const string &t) {
-        n = t.size();
-        s.resize(n + 1);
-        for (int i = 1; i <= n; i++) {
-            s[i] = t[i - 1];
-        }
+        n = t.size(), s.resize(n + 1);
+        for (int i = 1; i <= n; i++) s[i] = t[i - 1];
         work();
     }
-
-    SuffixArray(const vector<int> &t) {
-        n = t.size() - 1;        
-        s = t;
-        work();
-    }
-
+    SuffixArray(const vector<int> &t) { n = t.size() - 1, s = t, work(); }
     void work() {
-        sa.resize(n + 1);
-        rk.resize(n + 1);
-        for (int i = 1; i <= n; i++) {
-            sa[i] = i; 
-            rk[i] = s[i];
-        }
+        sa.resize(n + 1), rk.resize(n + 1);
+        for (int i = 1; i <= n; i++) sa[i] = i, rk[i] = s[i];
         int rank = *max_element(ALL(s));
         auto count_sort = [&](int m, int k) {
             vector<int> lsa = sa, cnt(m + 1);
-            for (int i = 1; i <= n; i++) {
-                int j = lsa[i] + k;
+            for (int i = 1, j = lsa[i] + k; i <= n; i++, j = lsa[i] + k) 
                 cnt[rk[j > n ? 0 : j]]++;
-            }
-            for (int i = 1; i <= m; i++) {
-                cnt[i] += cnt[i - 1];
-            }
-            for (int i = n; i >= 1; i--) {
-                int j = lsa[i] + k;
+            for (int i = 1; i <= m; i++) cnt[i] += cnt[i - 1];
+            for (int i = n, j = lsa[i] + k; i >= 1; i--, j = lsa[i] + k) 
                 sa[cnt[rk[j > n ? 0 : j]]--] = lsa[i];
-            }
         };
-
         for (int k = 1; k < n; k <<= 1) {
-            count_sort(rank, k);
-            count_sort(rank, 0);
+            count_sort(rank, k), count_sort(rank, 0);
             vector<int> las = rk;
             int j = 0;
             for (int i = 1; i <= n; i++) {
-                if (las[sa[i]] == las[sa[i - 1]] && las[sa[i] + k] == las[sa[i - 1] + k]) {
-                    rk[sa[i]] = j;
-                } else {
-                    rk[sa[i]] = ++j;
-                }
+                if (las[sa[i]] == las[sa[i - 1]] && las[sa[i] + k] == las[sa[i - 1] + k]) rk[sa[i]] = j;
+                else rk[sa[i]] = ++j;
             }
-            rank = j;
-            if (rank == n) {
-                break;
-            }
+            if ((rank = j) == n) break;
         }
-
         h.resize(n + 1);
         for (int i = 1, j = 0; i <= n; i++) {
-            if (j) {
-                j--;
-            }
-            while (i + j <= n && sa[rk[i] - 1] + j <= n && s[i + j] == s[sa[rk[i] - 1] + j]) {
-                j++;
-            }
+            if (j) j--;
+            while (i + j <= n && sa[rk[i] - 1] + j <= n && s[i + j] == s[sa[rk[i] - 1] + j]) j++;
             h[rk[i]] = j;
         }
-        ST.init(h);
+        ST.work(h);
     }
-
     int lcp(int x, int y) {
-        if (x == y) {
-            return n - x + 1;
-        } else {
-            x = rk[x];
-            y = rk[y];
-            if (x > y) {
-                swap(x, y);
-            }
-            return ST.query(x + 1, y);
-        }
+        if (x == y) return n - x + 1;
+        x = rk[x], y = rk[y];
+        if (x > y) swap(x, y);
+        return ST.query(x + 1, y);
     }
 };
 ```
