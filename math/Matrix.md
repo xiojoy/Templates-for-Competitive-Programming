@@ -84,8 +84,7 @@ public:
                 }
             }
         }
-        *this = a;
-        return *this;
+        return *this = a;
     }
     friend Matrix operator+(const Matrix &a, const Matrix &b) { 
         return Matrix(a) += b; 
