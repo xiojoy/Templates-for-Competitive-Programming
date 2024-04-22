@@ -44,3 +44,7 @@ struct Fenwick {
     }
 };
 ```
+
+例题：
+
+[P1801](https://www.luogu.com.cn/problem/P1801)
