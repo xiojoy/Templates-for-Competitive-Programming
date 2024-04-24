@@ -1,6 +1,8 @@
 高斯消元法可用于求解矩阵的秩和如下的 $n$ 元线性一次方程组。
 
-$$ \begin{cases} a_{1, 1} x_1 + a_{1, 2} x_2 + \cdots + a_{1, n} x_n = b_1 \\ a_{2, 1} x_1 + a_{2, 2} x_2 + \cdots + a_{2, n} x_n = b_2 \\ \cdots \\ a_{n,1} x_1 + a_{n, 2} x_2 + \cdots + a_{n, n} x_n = b_n \end{cases}$$
+$$ 
+\begin{cases} a_{1, 1} x_1 + a_{1, 2} x_2 + \cdots + a_{1, n} x_n = b_1 \\ a_{2, 1} x_1 + a_{2, 2} x_2 + \cdots + a_{2, n} x_n = b_2 \\ \cdots \\ a_{n,1} x_1 + a_{n, 2} x_2 + \cdots + a_{n, n} x_n = b_n \end{cases}
+$$
 
 记矩阵的秩为 $r$ （代码中为 $row$），当 $r < n$ 时有无穷多组解和无解两种情况，具体为哪种见代码，当 $r = n$ 时有唯一一组解，解存在矩阵的最后一列，时间复杂度： $O(n^3)$。
 
