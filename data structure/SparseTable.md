@@ -36,6 +36,7 @@ struct SparseTable {
             }
         }
     }
+
     int query(int l, int r) {
         int k = lg[r - l + 1];
         return min(st[l][k], st[r - (1 << k) + 1][k]);
