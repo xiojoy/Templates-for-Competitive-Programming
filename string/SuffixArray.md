@@ -83,7 +83,7 @@ struct SuffixArray {
 
 5. 比较一个字符串的两个子串的大小关系
 
-​	假设需要比较的是 $A=S[a..b]$ 和 $B=S[c..d]$ 的大小关系。若 $lcp(a, c)\ge\min(|A|, |B|)$， $A<B\iff |A|<|B|$，否则， $A<B\iff rk[a]< rk[c]$。
+​	假设需要比较的是 $A=S[a..b]$ 和 $B=S[c..d]$ 的大小关系。若 $lcp(a, c)\ge\min(|A|, |B|)$， ${A}<{B}\iff |A|<|B|$，否则， ${A}<{B}\iff rk[a]< rk[c]$。
 
 6. 不同子串的数目
 
