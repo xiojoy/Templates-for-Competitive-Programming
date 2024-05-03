@@ -14,10 +14,10 @@ struct SparseTable {
     
     SparseTable() {}
     SparseTable(const vector<int> &a) {
-        init(a);
+        work(a);
     }
 
-    void init(const vector<int> &a) {
+    void work(const vector<int> &a) {
         n = a.size() - 1;
         lg.resize(n + 1);
         st.assign(n + 1, vector<int>(20, INF));
