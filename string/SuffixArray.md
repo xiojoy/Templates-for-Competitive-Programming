@@ -15,41 +15,33 @@ struct SuffixArray {
         for (int i = 1; i <= n; i++) s[i] = t[i - 1];
         work();
     }
-    SuffixArray(const vector<int> &t) {
-        n = t.size() - 1, s = t;
-        work();
-    }
+    SuffixArray(const vector<int> &t) { n = t.size() - 1, s = t, work(); }
     void work() {
-        sa.resize(n + 1), rk.resize(n + 1);
+        sa.resize(n + 1), rk.resize(n + 1), h.resize(n + 1);
         for (int i = 1; i <= n; i++) sa[i] = i, rk[i] = s[i];
         int rank = *max_element(ALL(s));
+        auto get = [&](int i)->int { return i > n ? 0 : i; };
+        vector<int> lsa, cnt;
         auto count_sort = [&](int m, int k) {
-            vector<int> lsa = sa, cnt(m + 1);
-            for (int i = 1; i <= n; i++) {
-                int j = lsa[i] + k;
-                cnt[rk[j > n ? 0 : j]]++;
-            }
+            lsa = sa, cnt.assign(m + 1, 0);
+            for (int i = 1; i <= n; i++) cnt[rk[get(lsa[i] + k)]]++;
             for (int i = 1; i <= m; i++) cnt[i] += cnt[i - 1];
-            for (int i = n; i >= 1; i--) {
-                int j = lsa[i] + k;
-                sa[cnt[rk[j > n ? 0 : j]]--] = lsa[i];
-            }
+            for (int i = n; i >= 1; i--) sa[cnt[rk[get(lsa[i] + k)]]--] = lsa[i];
         };
+        vector<int> las;
         for (int k = 1; k < n; k <<= 1) {
-            count_sort(rank, k), count_sort(rank, 0);
-            vector<int> las = rk;
+            count_sort(rank, k), count_sort(rank, 0), las = rk;
             int j = 0;
             for (int i = 1; i <= n; i++) {
-                if (las[sa[i]] == las[sa[i - 1]] && las[sa[i] + k] == las[sa[i - 1] + k]) rk[sa[i]] = j;
+                if (las[sa[i]] == las[sa[i - 1]] && las[get(sa[i] + k)] == las[get(sa[i - 1] + k)]) rk[sa[i]] = j;
                 else rk[sa[i]] = ++j;
             }
             if ((rank = j) == n) break;
         }
-        h.resize(n + 1);
         for(int i = 1; i <= n; i++) rk[sa[i]] = i;
         for(int i = 1, k = 0; i <= n; i++) {
-            if(rk[i] == 1) continue;
-            if(k) k--;
+            if (rk[i] == 1) continue;
+            if (k) k--;
             int j = sa[rk[i] - 1];
             while (i + k <= n && j + k <= n && s[i + k] == s[j + k]) k++;
             h[rk[i]] = k;
