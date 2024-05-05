@@ -13,46 +13,23 @@ $merge(x,y)$：将 $y$ 所在的集合合并至 $x$ 所在的集合中，成功�
 $size(x)$：查询 $x$ 所在集合的大小。
 
 ```C++
-class DisjointSetUnion {
-private:
+struct DisjointSetUnion {
     vector<int> f, siz;
-public:
     DisjointSetUnion() {}
-    DisjointSetUnion(int n) {
-        init(n);
-    }
-    
-    void init(int n) {
-        f.resize(n);
-        iota(f.begin(), f.end(), 0);
-        siz.assign(n, 1);
-    }
-    
+    DisjointSetUnion(int n) { init(n); }
+    void init(int n) { f.resize(n), iota(ALL(f), 1), siz.assign(n, 1); }
     int find(int x) {
-        while (x != f[x]) {
-            x = f[x] = f[f[x]];
-        }
+        while (x != f[x]) x = f[x] = f[f[x]];
         return x;
     }
-    
-    bool same(int x, int y) {
-        return find(x) == find(y);
-    }
-    
+    bool same(int x, int y) { return find(x) == find(y); }
     bool merge(int x, int y) {
-        x = find(x);
-        y = find(y);
-        if (x == y) {
-            return false;
-        }
-        siz[x] += siz[y];
-        f[y] = x;
+        x = find(x), y = find(y);
+        if (x == y) return false;
+        siz[x] += siz[y], f[y] = x;
         return true;
     }
-
-    int size(int x) {
-        return siz[find(x)];
-    }
+    int size(int x) { return siz[find(x)]; }
 };
 ```
 
