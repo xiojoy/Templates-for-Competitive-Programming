@@ -1,4 +1,4 @@
-$unordered\\_map$ 的 $hash$ 函数固定易被卡，于是采用自定义随机哈希函数 $custom\\_hash$。
+$unordered\\_map$ 的单次操作的期望时间复杂度为 $O(1)$， 但由于 $hash$ 函数固定易被卡至 $O(n)$，而使用自定义随机哈希函数 $custom\\_hash$ 防止被卡。
 
 ```C++
 struct custom_hash {
@@ -16,4 +16,3 @@ struct custom_hash {
 };
 unordered_map<int, int, custom_hash> mp;
 ```
-
