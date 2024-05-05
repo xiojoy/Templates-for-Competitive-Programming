@@ -1,9 +1,9 @@
 $Dijkstra$ 用于求某起点到所有点的最短距离。 $n、m$ 分别为图的点数和边数， $u$ 为起点， $d_i$ 表示点 $i$ 与点 $u$ 的当前最短距离， $st_i$ 表示点 $i$ 与点 $u$ 的最短距离是否确定。
 
-$dijkstra(u)$： 返回以 $u$ 为起点的所有点到 $u$ 的最短距离数组，时间复杂度： $O(mlogn)$。
+$Dijkstra(u)$： 返回以 $u$ 为起点的所有点到 $u$ 的最短距离数组，时间复杂度： $O(mlogn)$。
 
 ```c++
-auto dijkstra = [&](int u)->vector<int> {
+auto Dijkstra = [&](int u)->vector<int> {
     vector<int> d(n + 1, INF);
     vector<bool> st(n + 1);
     priority_queue<array<int, 2>, vector<array<int, 2>>, greater<array<int, 2>>> q; 
