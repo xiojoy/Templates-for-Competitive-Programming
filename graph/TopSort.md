@@ -16,3 +16,7 @@ auto topsort = [&]()->vector<int> {
     return top;
 };
 ```
+
+例题：
+
+[HDU1285](http://acm.hdu.edu.cn/showproblem.php?pid=1285)
