@@ -3,7 +3,7 @@
 时间复杂度： $O(n)$。
 
 ```C++
-vector<int> prefix_function(const string &s) {
+vector<int> PrefixFunction(const string &s) {
     int n = s.size();
     vector<int> pi(n);
     for (int i = 1; i < n; i++) {
