@@ -9,34 +9,21 @@ $query(l,r)$：求区间 $[l,r]$ 的询问值，时间复杂度： $O(1)$。
 ```C++
 struct SparseTable {
     int n;
-    vector<vector<int>> st;
     vector<int> lg;
-    
-    SparseTable() {}
-    SparseTable(const vector<int> &a) {
-        work(a);
-    }
-
+    vector<vector<int>> st;
+    SparseTable(){}
+    SparseTable(const vector<int> &a) { work(a); }
     void work(const vector<int> &a) {
-        n = a.size() - 1;
-        lg.resize(n + 1);
-        st.assign(n + 1, vector<int>(20, INF)); // logn < 20
-        for (int i = 0; 1 << i <= n; i++) {
-            lg[1 << i] = i;
-        }
+        n = a.size() - 1, lg.resize(n + 1), st.assign(n + 1, vector<int>(20)); // 适用于n≤1e6
+        for (int i = 0; 1 << i <= n; i++) lg[1 << i] = i;
         for (int i = 1; i <= n; i++) {
-            if (!lg[i]) {
-                lg[i] = lg[i - 1];
-            }
+            if (!lg[i]) lg[i] = lg[i - 1];
             st[i][0] = a[i];
         }
-        for (int j = 1; 1 << j <= n; j++) {
-            for (int i = 1; i + (1 << j) - 1 <= n; i++) {
+        for (int j = 1; 1 << j <= n; j++)
+            for (int i = 1; i + (1 << j) - 1 <= n; i++)
                 st[i][j] = min(st[i][j - 1], st[i + (1 << j - 1)][j - 1]);
-            }
-        }
     }
-
     int query(int l, int r) {
         int k = lg[r - l + 1];
         return min(st[l][k], st[r - (1 << k) + 1][k]);
