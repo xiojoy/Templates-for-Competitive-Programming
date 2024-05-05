@@ -40,3 +40,7 @@ void KMP() {
     }
 }
 ```
+
+例题：
+
+[Div3_943_G1](https://codeforces.com/contest/1968/problem/G1)
