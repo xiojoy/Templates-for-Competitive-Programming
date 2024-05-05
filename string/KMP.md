@@ -28,7 +28,6 @@ vector<int> get_nextval(const string &P) {
 	}
     return ne;
 }
-
 void KMP() {
     string S, P;
     auto ne = get_nextval(P);
