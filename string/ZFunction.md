@@ -18,4 +18,4 @@ vector<int> ZFunction(const string &s) {
 
 例题：
 
-[contest_41745_C](https://ac.nowcoder.com/acm/contest/41745/C)
+[Div3_943_G2](https://codeforces.com/contest/1968/problem/G2)
