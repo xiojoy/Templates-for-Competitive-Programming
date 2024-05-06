@@ -9,10 +9,7 @@ auto Bellman_Ford = [&](int u)->vector<int> {
     d[u] = 0;
     for (int i = 1; i <= k; i++) {
         vector<int> las = d;
-        for (int j = 1; j <= m; j++) {
-            auto [u, v, w] = E[j];
-            d[v] = min(d[v], las[u] + w);
-        }
+        for (auto [u, v, w] : E) d[v] = min(d[v], las[u] + w);
     }
     return d;
 };
