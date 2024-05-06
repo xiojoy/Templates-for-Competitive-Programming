@@ -14,3 +14,7 @@ auto Kruskal = [&]()->i64 {
     return cnt == n - 1 ? sum : -1;
 };
 ```
+
+例题：
+
+[ABC_352_E](https://atcoder.jp/contests/abc352/tasks/abc352_e)
