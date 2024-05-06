@@ -6,10 +6,7 @@ $Floyd()$：返回最短距离数组 $d$，时间复杂度： $O(n^3)$。
 auto Floyd = [&]()->vector<vector<int>> {
     vector<vector<int>> d(n + 1, vector<int>(n + 1, INF));
     for (int i = 1; i <= n; i++) d[i][i] = 0;
-    for (int j = 1; j <= m; j++) {
-        auto [u, v, w] = E[j];
-        d[u][v] = min(d[u][v], w);
-    }
+    for (auto [u, v, w] : E) d[u][v] = min(d[u][v], w);
     for (int k = 1; k <= n; k++)
         for (int i = 1; i <= n; i++)
             for (int j = 1; j <= n; j++)
