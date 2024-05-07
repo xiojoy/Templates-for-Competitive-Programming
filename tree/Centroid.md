@@ -7,14 +7,14 @@ auto get_centroid = [&]()->int {
     int cent = 0, val = INF;
     auto dfs = [&](auto self, int u, int fa)->int {
         int siz = 1, mx = 0;
-        for (auto [v, w] : adj[u]) {
-            if (v != fa && !vis[v]) {
+        for (int v : adj[u]) {
+            if (v != fa) {
                 int num = self(self, v, u);
                 siz += num, mx = max(mx, num);
             }
         }
         mx = max(mx, n - siz);
-        if (mx < val) cent = u, val = mx;
+        if (mx <= val) cent = u, val = mx;
         return siz;
     };
     dfs(dfs, 1, 0);
