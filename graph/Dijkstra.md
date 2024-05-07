@@ -14,10 +14,7 @@ auto Dijkstra = [&](int u)->vector<int> {
         if (st[u]) continue;
         st[u] = true;
         for (auto [v, w] : adj[u]) {
-            if (d[v] > dis + w) {
-                d[v] = dis + w;
-                q.push({d[v], v});
-            }
+            if (d[v] > dis + w) d[v] = dis + w, q.push({d[v], v});
         }
     }
     return d;
