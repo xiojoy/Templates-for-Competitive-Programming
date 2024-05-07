@@ -2,6 +2,8 @@
 
 法一（适用于无负权边）：对任意一点 $x$ 用 $BFS$ 求其到树上所有点的最短距离，其中最远点 $u$ 即为直径的一个端点，再对点 $u$ 用 $BFS$ 求其到树上所有点的最短距离，其中最远点 $v$ 即为直径的另一端点。
 
+$get\\_diameter()$：返回树的直径，时间复杂度： $O(n)$。
+
 ```c++
 auto get_diameter = [&]()->int {
     auto BFS = [&](int u)->vector<int> {
@@ -43,8 +45,6 @@ auto get_diameter = [&]()->int {
     return d;
 };
 ```
-
-$get\\_diameter()$：返回树的直径，时间复杂度： $O(n)$。
 
 例题：
 
