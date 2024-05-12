@@ -3,13 +3,12 @@
 $get\\_scc()$：返回 $scc$ 数组，时间复杂度： $O(n + m)$。
 
 ```c++
-auto get_scc = [&]()->vector<int> {
+auto get_scc = [&](const vector<vector<int>> &adj)->vector<int> {
     stack<int> stk;
     int cur = 0, sc = 0;
     vector<int> low(n + 1), dfn(n + 1), scc(n + 1);
     auto Tarjan = [&](auto self, int u)->void {
-        dfn[u] = low[u] = ++cur;
-        stk.push(u);
+        dfn[u] = low[u] = ++cur, stk.push(u);
         for (int v : adj[u]) {
             if (!dfn[v]) self(self, v), low[u] = min(low[u], low[v]);
             else if (!scc[v]) low[u] = min(low[u], dfn[v]);
