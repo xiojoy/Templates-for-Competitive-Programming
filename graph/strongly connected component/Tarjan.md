@@ -1,4 +1,4 @@
-强连通分量是指极大的连通子图。 $tarjan$ 可用于求图的所有强连通分量。 $n、m$ 分别为点数和边数， $dfn_i$ 表示点 $i$ 的时间戳， $low_i$ 表示点 $i$ 的所在的强连通分量中所有点的最小 $dfn$ 值， $scc_i$ 表示点 $i$ 属于哪个强连通分量。
+强连通分量是指极大的连通子图。 $tarjan$ 可用于求图的所有强连通分量。 $n、m$ 分别为点数和边数， $dfn_i$ 表示点 $i$ 的时间戳， $low_i$ 表示点 $i$ 的所在的强连通分量中所有点的最小 $dfn$ 值， $scc_i$ 表示点 $i$ 属于哪个强连通分量，将原图依强连通分量缩点得新的有向无环图后， $scc_i$ 也表示点 $i$ 所属的强连通分量在新图中的拓扑序。
 
 $get\\_scc(adj)$：返回 $scc$ 数组，时间复杂度： $O(n + m)$。
 
@@ -21,5 +21,20 @@ auto get_scc = [&](const vector<vector<int>> &adj)->vector<int> {
     };
     for (int i = 1; i <= n; i++) if (!dfn[i]) Tarjan(Tarjan, i);
     return scc;
+};
+```
+
+```c++
+auto get_dag = [&](const vector<vector<int>> &adj, const vector<int> &scc)->vector<vector<int>> {
+    int n = adj.size() - 1, N = *max_element(ALL(scc));
+    vector<vector<int>> dag(N + 1);
+    for (int i = 1; i <= n; i++) {
+        for (int j : adj[i]) {
+            if (scc[j] != scc[i]) {
+                dag[scc[i]].push_back(scc[j]);
+            }
+        }        
+    }
+    return dag;
 };
 ```
