@@ -1,9 +1,9 @@
 $Floyd$ 用于求任意两点之间的最短距离（不允许有负环）。 $n$ 为图的点数， $d_{i,j}$ 表示点 $i$ 到点 $j$ 的最短距离。
 
-$Floyd()$：返回最短距离数组 $d$，时间复杂度： $O(n^3)$。
+$Floyd(E, n)$：返回最短距离数组 $d$，时间复杂度： $O(n^3)$。
 
 ```c++
-auto Floyd = [&]()->vector<vector<int>> {
+auto Floyd = [&](const vector<array<int, 3>> &E, int n)->vector<vector<int>> {
     vector<vector<int>> d(n + 1, vector<int>(n + 1, INF));
     for (int i = 1; i <= n; i++) d[i][i] = 0;
     for (auto [u, v, w] : E) d[u][v] = min(d[u][v], w);
