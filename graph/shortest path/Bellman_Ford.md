@@ -4,7 +4,8 @@ $n、m$ 分别为图的点数和边数， $u$ 为起点， $d_i$ 表示点 $i$ �
 $Bellman\\_Ford(u)$：返回最短距离数组 $d$，时间复杂度： $O(km)$。
 
 ```c++
-auto Bellman_Ford = [&](int u)->vector<int> {
+auto Bellman_Ford = [&](const vector<vector<array<int, 2>>> &adj, int u)->vector<int> {
+    int n = adj.size() - 1;
     vector<int> d(n + 1, INF);
     d[u] = 0;
     for (int i = 1; i <= k; i++) {
