@@ -3,7 +3,8 @@
 $ColorDetermining()$：判定二分图，时间复杂度： $O(n)$。
 
 ```c++
-auto ColorDetermining = [&]()->bool {
+auto ColorDetermining = [&](const vector<vector<int>> &adj)->bool {
+    int n = adj.size() - 1;
     vector<int> color(n + 1);
     color[0] = 1;
     auto dfs = [&](auto self, int u, int fa)->bool {
