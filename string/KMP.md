@@ -17,6 +17,9 @@ vector<int> get_next(const string &P) {
 	}
     return ne;
 }
+```
+
+```c++
 vector<int> get_nextval(const string &P) {
     int n = P.size();
 	vector<int> ne(n + 1, -1);
