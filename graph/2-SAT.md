@@ -6,7 +6,7 @@ $2-SAT$ 是指如后文一类的问题，给出 $n$ 个集合，每个集合有 
 
 由于题目给定矛盾的方式多样，建图需因地制宜，但无论如何建图，都可以考虑把第 $i$ 个集合的两元素分别记为点 $i$ 和 点 $i+n$，方便建图。 $ans_i$ 表示是否选择点 $i$（未选择 $i$ 则选择 $i+n$）， $ans_0$ 为 $1$ 时表示不存在选法。
 
-$auto TwoSat(scc,\ n)$：返回 $ans$ 数组，时间复杂度： $O(n+m)$。
+$TwoSat(scc,\ n)$：返回 $ans$ 数组，时间复杂度： $O(n+m)$。
 
 ```c++
 auto TwoSat = [&](const vector<int> &scc, int n)->vector<bool> {
