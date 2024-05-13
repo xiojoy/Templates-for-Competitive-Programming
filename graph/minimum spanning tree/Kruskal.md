@@ -3,7 +3,7 @@ $Kruskal$ 用于求连通图的最小生成树。 $n、m$ 分别为图的点数�
 $Kruskal()$： 图非连通时返回 $-1$，否则返回最小生成树的权值，时间复杂度： $O(mlogm)$。
 
 ```c++
-auto Kruskal = [&]()->i64 {
+auto Kruskal = [&](const vector<array<int, 3>> &E, int n)->i64 {
     DisjointSetUnion DSU(n + 1);
     sort(all(E));
     i64 sum = 0, cnt = 0;
