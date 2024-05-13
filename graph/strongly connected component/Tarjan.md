@@ -2,6 +2,8 @@
 
 $get\\_scc(adj)$：返回 $scc$ 数组，时间复杂度： $O(n + m)$。
 
+$get_dag(adj,\ scc)$：对原图缩点返回新的有向无环图，时间复杂度： $O(n + m)$。
+
 ```c++
 auto get_scc = [&](const vector<vector<int>> &adj)->vector<int> {
     stack<int> stk;
