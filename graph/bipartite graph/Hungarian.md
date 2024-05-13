@@ -2,7 +2,7 @@
 
 $dfs(u)$：尝试为左侧 $u$ 点找新点匹配，找到返回 $true$，否则返回 $false$，时间复杂度： $O(n_1+m)$。
 
-$Hungarian()$：返回二分图的最大匹配数，时间复杂度： $O((n_1m)$。
+$Hungarian(adj,\ n1,\ n2)$：返回二分图的最大匹配数，时间复杂度： $O((n_1m)$。
 
 ```c++
 auto Hungarian = [&](const vector<vector<int>> &adj, int n1, int n2)->int {
