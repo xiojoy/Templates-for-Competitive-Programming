@@ -5,6 +5,7 @@ $SPFA(u)$：返回以 $u$ 为起点的最短距离数组 $d$，时间复杂度�
 
 ```C++
 auto SPFA = [&](const vector<vector<array<int, 2>>> &adj, int u)->vector<int> {
+    int n = adj.size() - 1;
     vector<int> d(n + 1, INF);
     vector<bool> st(n + 1);
     queue<int> q; 
