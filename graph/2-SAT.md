@@ -26,3 +26,11 @@ auto TwoSat = [&](const vector<int> &scc, int n)->vector<bool> {
     return ans;
 };
 ```
+
+例题：
+
+[HDU3062](http://acm.hdu.edu.cn/showproblem.php?pid=3062)
+
+[P4782](https://www.luogu.com.cn/problem/P4782)
+
+[Div4_944_H](https://codeforces.com/contest/1971/problem/H)
