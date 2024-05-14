@@ -29,7 +29,7 @@ auto get_diameter = [&](const vector<vector<int>> &adj)->int {
 法二（不限制边权）：以某点为根做树形 $DP$， $dp_{u,0}、dp_{u,1}$ 分别表示在以点 $u$ 为根的子树中，从根 $u$ 到叶子节点的最长和次长距离。
 
 ```c++
-auto get_diameter = [&]()->int {
+auto get_diameter = [&](const vector<vector<int>> &adj)->int {
     vector<array<int, 2>> dp(n + 1);
     auto dfs = [&](auto self, int u, int fa)->void {
         for (auto [v, w] : adj[u]) {
