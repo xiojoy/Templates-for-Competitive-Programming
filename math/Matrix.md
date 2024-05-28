@@ -136,3 +136,5 @@ istream& operator>>(istream &in, Matrix<Tp> &x) {
 [P1939](https://www.luogu.com.cn/problem/P1939)
 
 [P8624](https://www.luogu.com.cn/problem/P8624)
+
+[cf_1970_E2](https://codeforces.com/contest/1970/problem/E2)
