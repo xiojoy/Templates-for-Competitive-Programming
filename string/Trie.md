@@ -69,3 +69,7 @@ struct Trie {
 1. 检索字符串
 
 2. 维护异或极值
+
+例题：
+
+[Div2_173_E](https://codeforces.com/problemset/problem/282/E)
