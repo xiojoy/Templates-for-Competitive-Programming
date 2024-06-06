@@ -9,7 +9,7 @@ struct Trie {
     vector<array<int, 26>> t;
     vector<int> val;
     Trie() : t(1), val(1) {}
-    void insert(const string &s) {
+    void insert(const string &s, int p = 1) {
         int k = 0;
         for (char c : s) {
             int u = c - 'a';
@@ -20,7 +20,7 @@ struct Trie {
             }
             k = t[k][u];
         }
-        val[k]++;
+        val[k] += p;
     };
     int query(const string &s) {
         int k = 0;
@@ -40,7 +40,7 @@ struct Trie {
     vector<array<int, 2>> t;
     vector<int> val;
     Trie() : t(1), val(1) {}
-    void insert(const int &x) {
+    void insert(const int &x, int p = 1) {
         int k = 0;
         for (int i = 30; i >= 0; i--) {
             int u = x >> i & 1;
@@ -51,7 +51,7 @@ struct Trie {
             }
             k = t[k][u];
         }
-        val[k]++;
+        val[k] += p;
     };
     int query(int x) {
         int k = 0;
