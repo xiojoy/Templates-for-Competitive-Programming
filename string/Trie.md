@@ -73,3 +73,5 @@ struct Trie {
 例题：
 
 [Div2_173_E](https://codeforces.com/problemset/problem/282/E)
+
+[Div3_950_G](https://codeforces.com/contest/1980/problem/G)
