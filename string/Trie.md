@@ -75,3 +75,5 @@ struct Trie {
 [Div2_173_E](https://codeforces.com/problemset/problem/282/E)
 
 [Div3_950_G](https://codeforces.com/contest/1980/problem/G)
+
+[Div2_815_D2](https://codeforces.com/contest/1720/problem/D2)
