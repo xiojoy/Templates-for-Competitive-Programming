@@ -1,4 +1,6 @@
+强连通分量是指极大的连通子图。 $Tarjan$ 可用于求无向图的割点。
 
+$get\\_ap(adj)$：返回 $ap$ 数组，时间复杂度： $O(n + m)$。
 ```c++
 auto get_ap = [&](const vector<vector<int>> &adj)->vector<int> {
     int n = adj.size() - 1, cur = 0;
