@@ -39,3 +39,4 @@ struct WeightedDisjointSetUnion {
 
 [P2024](https://www.luogu.com.cn/problem/P2024)
 
+[Div3_805_E](https://codeforces.com/contest/1702/problem/E)
