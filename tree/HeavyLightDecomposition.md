@@ -25,14 +25,14 @@ $rooted\\_size(u,v)$ ：求以点 $u$ 为根节点时 $v$ 子树的大小，时�
 $rooted\\_size(a,b,c)$ ：求以点 $a$ 为根节点时 $b$ 和 $c$ 的最近公共祖先，时间复杂度： $O(logn)$。
 
 ```c++
-struct HLD {
+struct HeavyLightDecomposition {
     int n;
     vector<int> siz, top, dep, parent, in, out, seq;
     vector<vector<int>> adj;
     int cur;
     
-    HLD() {}
-    HLD(int n) {
+    HeavyLightDecomposition() {}
+    HeavyLightDecomposition(int n) {
         init(n);
     }
     void init(int n) {
