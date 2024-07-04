@@ -68,4 +68,6 @@ while (q--) {
 }
 ```
 
+例题：
+
 [Div3_805_G2](https://codeforces.com/contest/1702/problem/G2)
