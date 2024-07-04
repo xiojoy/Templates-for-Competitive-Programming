@@ -47,7 +47,7 @@ struct HLD {
         cur = 0;
         adj.assign(n, {});
     }
-    void addEdge(int u, int v) {
+    void add_edge(int u, int v) {
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
@@ -112,32 +112,32 @@ struct HLD {
         return seq[in[u] - dep[u] + d];
     }
     
-    bool isAncester(int u, int v) {
+    bool is_ancester(int u, int v) {
         return in[u] <= in[v] && in[v] < out[u];
     }
     
-    int rootedParent(int u, int v) {
+    int rooted_parent(int u, int v) {
         swap(u, v);
         if (u == v) {
             return u;
         }
-        if (!isAncester(u, v)) {
+        if (!is_ancester(u, v)) {
             return parent[u];
         }
         return *--upper_bound(all(adj[u]), v, [&](int x, int y) { return in[x] < in[y]; });
     }
     
-    int rootedSize(int u, int v) {
+    int rooted_size(int u, int v) {
         if (u == v) {
             return n;
         }
-        if (!isAncester(v, u)) {
+        if (!is_ancester(v, u)) {
             return siz[v];
         }
-        return n - siz[rootedParent(u, v)];
+        return n - siz[rooted_parent(u, v)];
     }
     
-    int rootedLca(int a, int b, int c) {
+    int rooted_lca(int a, int b, int c) {
         return lca(a, b) ^ lca(b, c) ^ lca(c, a);
     }
 };
