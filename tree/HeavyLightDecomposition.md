@@ -6,7 +6,7 @@ $add\\_edge(u, v)$ ：添加无向边，时间复杂度： $O(1)$。
 
 $work(root=0)$ ：进行树链剖分，时间复杂度： $O(n)$。
 
-$dfs1(u)$ ：求 $siz、parent、dep$，将点 $u$ 的重儿子置为 $adj_{u,0}$ 并删除点 $u$ 向父亲的边，时间复杂度： $O(n)$。
+$dfs1(u)$ ：求 $siz、parent、dep$，将点 $u$ 的重儿子置为 $adj_{u,\0}$ 并删除点 $u$ 向父亲的边，时间复杂度： $O(n)$。
 
 $dfs2(u)$ ：求 $in、seq、top、out$，时间复杂度： $O(n)$。
 
