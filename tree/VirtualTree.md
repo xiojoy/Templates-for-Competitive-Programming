@@ -67,3 +67,5 @@ while (q--) {
     }
 }
 ```
+
+(Div3_805_G2)[https://codeforces.com/contest/1702/problem/G2]
