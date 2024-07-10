@@ -33,4 +33,4 @@ struct Fenwick {
 
 [P1801](https://www.luogu.com.cn/problem/P1801)
 
-[Div3_780_F2][https://codeforces.com/contest/1660/problem/F2]
+[Div3_780_F2](https://codeforces.com/contest/1660/problem/F2)
