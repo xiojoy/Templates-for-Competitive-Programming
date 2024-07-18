@@ -21,3 +21,7 @@ auto get_bge = [&](const vector<vector<int>> &adj)->vector<array<int, 2>> {
     return bge;
 };
 ```
+
+例题：
+
+[Div3_954_F](https://codeforces.com/contest/1986/problem/F)
