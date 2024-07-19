@@ -26,3 +26,9 @@ auto Dijkstra = [&](int u) {
     return d;
 };
 ```
+
+例题：
+
+[P3371](https://www.luogu.com.cn/problem/P3371)
+
+[ABC_362_D](https://atcoder.jp/contests/abc362/tasks/abc362_d)
