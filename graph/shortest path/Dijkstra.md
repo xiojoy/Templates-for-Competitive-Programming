@@ -3,18 +3,25 @@ $Dijkstra$ 用于在无负权边的图中求某起点到所有点的最短距离
 $Dijkstra(adj,\ u)$：返回以 $u$ 为起点的最短距离数组 $d$，时间复杂度： $O((n+m)logn)$。
 
 ```c++
-auto Dijkstra = [&](const vector<vector<array<int, 2>>> &adj, int u)->vector<int> {
-    int n = adj.size() - 1;
-    vector<int> d(n + 1, INF);
+auto Dijkstra = [&](int u) {
     vector<bool> st(n + 1);
-    priority_queue<array<int, 2>, vector<array<int, 2>>, greater<array<int, 2>>> q; 
-    d[u] = 0, q.push({0, u});
+    vector<i64> d(n + 1, LLONG_MAX >> 1);
+    priority_queue<tuple<i64, int>, vector<tuple<i64, int>>, greater<>> q; 
+    d[u] = 0;
+    q.push({0, u});
     while (!q.empty()) {
         auto [dis, u] = q.top(); 
         q.pop();
-        if (st[u]) continue;
+        if (st[u]) {
+            continue;
+        }
         st[u] = true;
-        for (auto [v, w] : adj[u]) if (d[v] > dis + w) d[v] = dis + w, q.push({d[v], v});
+        for (auto [v, w] : adj[u]) {
+            if (d[v] > dis + w) {
+                d[v] = dis + w;
+                q.push({d[v], v});
+            }
+        }
     }
     return d;
 };
