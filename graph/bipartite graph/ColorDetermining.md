@@ -5,24 +5,28 @@ $ColorDetermining(adj)$：判定二分图，时间复杂度： $O(n)$。
 ```c++
 auto ColorDetermining = [&](const vector<vector<int>> &adj)->bool {
     int n = adj.size() - 1;
-    vector<int> color(n + 1);
-    color[0] = 1;
-    auto dfs = [&](auto self, int u, int fa)->bool {
-        color[u] = 3 ^ color[fa];
-        for (int v : adj[u]) {
-            if (v != fa) {
-                if (!color[v]) {
-                    if (!self(self, v, u)) return false;
+    vector<int> col(n + 1);
+    for (int u = 1; u <= n; u++) {
+        if (col[u]) {
+            continue;
+        }
+        col[u] = 1;
+        bool flag = true;
+        auto dfs = [&](auto self, int u)->void {
+            for (int v : adj[u]) {
+                if (!col[v]) {
+                    col[v] = 3 ^ col[u];
+                    self(self, v);
+                } else if (col[v] == col[u]) {
+                    flag = false;
                 }
-                else if ((color[u] ^ color[v]) != 3) return false;
             }
+        };
+        dfs(dfs, u);
+        if (!flag) {
+            return false;
         }
-        return true;
-    };
-    for (int i = 1; i <= n; i++)
-        if (!color[i]) {
-            if (!dfs(dfs, i, 0)) return false;
-        }
+    }
     return true;
 };
 ```
