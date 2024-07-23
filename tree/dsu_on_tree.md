@@ -1,5 +1,5 @@
 
-
+```c++
 vector<int> hson(n + 1), siz(n + 1);
 auto get_hson = [&](auto self, int u, int fa)->void {
     siz[u] = 1;
@@ -62,3 +62,4 @@ auto dfs = [&](auto self, int u, int fa, bool keep)->void {
     }
 };
 dfs(dfs, 1, 0, true);
+```c++
