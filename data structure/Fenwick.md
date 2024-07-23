@@ -12,18 +12,38 @@ struct Fenwick {
     #define lowbit(x) (x & -x)
     int n;
     vector<T> c;
-    Fenwick(int n) : n(n - 1), c(n) {}
-    void add(int k, T x) { for (int i = k; i <= n; i += lowbit(i)) c[i] += x; }
+
+    Fenwick() {}
+    Fenwick(int n) {
+        init(n);
+    }
+
+    void init(int n) {
+        this->n = n - 1;
+        c.resize(n);
+    }
+    void add(int k, T x) { 
+        for (int i = k; i <= n; i += lowbit(i)) {
+            c[i] += x; 
+        }
+    }
     T sum(int k) {
         T sum = T();
-        for (int i = k; i; i -= lowbit(i)) sum += c[i];
+        for (int i = k; i; i -= lowbit(i)) {
+            sum += c[i];
+        }
         return sum;
     }
-    T sum(int l, int r) { return sum(r) - sum(l - 1); }
+    T sum(int l, int r) { 
+        return sum(r) - sum(l - 1); 
+    }
     int kth(T k) {
         int x = 0;
-        for (int i = 1 << __lg(n); i; i >>= 1)
-            if (x + i <= n && k > c[x + i]) x += i, k -= c[x];
+        for (int i = 1 << __lg(n); i; i >>= 1) {
+            if (x + i <= n && k > c[x + i]) {
+                x += i, k -= c[x];
+            }
+        }
         return x + 1;
     }
 };
