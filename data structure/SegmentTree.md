@@ -217,3 +217,5 @@ struct LazySegmentTree {
 例题：
 
 [P1198](https://www.luogu.com.cn/problem/P1198)
+
+[AcW245](https://www.acwing.com/problem/content/246)
