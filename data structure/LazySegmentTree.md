@@ -115,3 +115,11 @@ struct LazySegmentTree {
     }
 };
 ```
+
+例题：
+
+[P3372](https://www.luogu.com.cn/problem/P3372)
+
+[P3373](https://www.luogu.com.cn/problem/P3373)
+
+[P7497](https://www.luogu.com.cn/problem/P7497)
