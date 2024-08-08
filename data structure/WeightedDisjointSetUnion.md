@@ -36,7 +36,7 @@ struct WeightedDisjointSetUnion {
     }
     bool merge(int x, int y, int w) {
         int fx = find(x), fy = find(y);
-        if (x == y) {
+        if (fx == fy) {
             return false;
         }
         d[fy] = d[x] + w - d[y];
@@ -44,11 +44,12 @@ struct WeightedDisjointSetUnion {
         f[fy] = fx;
         return true;
     }
-    int size(int x) { 
+    int size(int x) {
         return siz[find(x)]; 
     }
-    int dist(int x, int y) { 
-        return same(x, y) ? d[y] - d[x] : -114514; 
+    int dist(int x, int y) {
+        assert(same(x, y));
+        return d[y] - d[x];
     }
 };
 ```
