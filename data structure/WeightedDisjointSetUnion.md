@@ -11,25 +11,45 @@ $dist(x, y)$： $x$ 与 $y$ 所在集合相同时返回点 $y$ 到点 $x$ 的距
 ```C++
 struct WeightedDisjointSetUnion {
     vector<int> f, siz, d;
+
     WeightedDisjointSetUnion() {}
-    WeightedDisjointSetUnion(int n) { init(n); }
-    void init(int n) { f.resize(n), d.resize(n), iota(ALL(f), 1), siz.assign(n, 1); }
+    WeightedDisjointSetUnion(int n) { 
+        init(n); 
+    }
+
+    void init(int n) {
+        f.resize(n);
+        d.resize(n);
+        siz.assign(n, 1);
+        iota(all(f), 0);
+    }
     int find(int x) {
         if (x != f[x]) {
-            int fx = f[x];
-            f[x] = find(f[x]), d[x] += d[fx];
+            int fa = f[x];
+            f[x] = find(f[x]);
+            d[x] += d[fa];
         }
         return f[x];
     }
-    bool same(int x, int y) { return find(x) == find(y); }
+    bool same(int x, int y) { 
+        return find(x) == find(y); 
+    }
     bool merge(int x, int y, int w) {
         int fx = find(x), fy = find(y);
-        if (x == y) return false;
-        d[fy] = d[x] + w - d[y], siz[fx] += siz[fy], f[fy] = fx;
+        if (x == y) {
+            return false;
+        }
+        d[fy] = d[x] + w - d[y];
+        siz[fx] += siz[fy];
+        f[fy] = fx;
         return true;
     }
-    int size(int x) { return siz[find(x)]; }
-    int dist(int x, int y) { return same(x, y) ? d[y] - d[x] : -114514; }
+    int size(int x) { 
+        return siz[find(x)]; 
+    }
+    int dist(int x, int y) { 
+        return same(x, y) ? d[y] - d[x] : -114514; 
+    }
 };
 ```
 
