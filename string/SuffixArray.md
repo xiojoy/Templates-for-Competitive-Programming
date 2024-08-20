@@ -9,6 +9,7 @@ struct SuffixArray {
     int n;
     vector<int> s, sa, rk, h;
     SparseTable ST;
+
     SuffixArray(){}        
     SuffixArray(const string &t) {
         n = t.size(), s.resize(n + 1);
@@ -16,11 +17,12 @@ struct SuffixArray {
         work();
     }
     SuffixArray(const vector<int> &t) { n = t.size() - 1, s = t, work(); }
+
+    int get(int i) { return i > n ? 0 : i; }
     void work() {
         sa.resize(n + 1), rk.resize(n + 1), h.resize(n + 1);
         for (int i = 1; i <= n; i++) sa[i] = i, rk[i] = s[i];
         int rank = *max_element(ALL(s));
-        auto get = [&](int i)->int { return i > n ? 0 : i; };
         vector<int> lsa, cnt;
         auto count_sort = [&](int m, int k) {
             lsa = sa, cnt.assign(m + 1, 0);
@@ -52,7 +54,7 @@ struct SuffixArray {
         if (x == y) return n - x + 1;
         x = rk[x], y = rk[y];
         if (x > y) swap(x, y);
-        return ST.query(x + 1, y); // 求区间最小值
+        return ST.query(x + 1, y);
     }
 };
 ```
@@ -98,5 +100,7 @@ struct SuffixArray {
 [contest_41745_C](https://ac.nowcoder.com/acm/contest/41745/C)
 
 [P2852](https://www.luogu.com.cn/problem/P2852)
+
+[Div3_943_G2](https://codeforces.com/contest/1968/problem/G2)
 
 [Div3_943_G2](https://codeforces.com/contest/1968/problem/G2)
