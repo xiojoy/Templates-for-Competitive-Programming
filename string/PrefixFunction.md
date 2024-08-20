@@ -18,4 +18,4 @@ vector<int> PrefixFunction(const string &s) {
 
 例题：
 
-[Div1_97_B](https://codeforces.com/contest/126/problem/B)
+[Div1_93_B](https://codeforces.com/contest/126/problem/B)
