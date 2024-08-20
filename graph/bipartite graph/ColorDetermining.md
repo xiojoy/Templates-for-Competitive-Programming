@@ -33,4 +33,4 @@ auto ColorDetermining = [&](const vector<vector<int>> &adj)->bool {
 
 例题：
 
-[Div1+2_E](https://codeforces.com/problemset/problem/1991/E)
+[Div1+Div2_E](https://codeforces.com/problemset/problem/1991/E)
