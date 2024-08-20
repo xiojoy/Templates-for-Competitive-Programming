@@ -75,3 +75,7 @@ public:
     }
 };
 ```
+
+例题：
+
+[Div3_957_G](https://codeforces.com/problemset/problem/1991/E)
