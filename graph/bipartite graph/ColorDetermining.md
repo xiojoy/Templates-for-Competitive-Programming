@@ -30,3 +30,7 @@ auto ColorDetermining = [&](const vector<vector<int>> &adj)->bool {
     return true;
 };
 ```
+
+例题：
+
+[Div1+2_E](https://codeforces.com/problemset/problem/1991/E)
