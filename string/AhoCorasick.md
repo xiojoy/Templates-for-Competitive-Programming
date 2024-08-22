@@ -55,3 +55,7 @@ struct AhoCorasick {
 例题：
 
 [Edu_134_E](https://codeforces.com/contest/1721/problem/E)
+
+[P2292](https://www.luogu.com.cn/problem/P2292)
+
+[Edu_71_G](https://codeforces.com/contest/1207/problem/G)
