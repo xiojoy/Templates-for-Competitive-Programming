@@ -10,8 +10,7 @@ auto TopSort = [&](const vector<vector<int>> &adj)->vector<int> {
     vector<int> top;
     while (!q.empty()) {
         int u = q.front();
-        q.pop();
-        top.push_back(u);
+        q.pop(), top.push_back(u);
         for (int v : adj[u]) if (!--id[v]) q.push(v);
     }
     return top;
