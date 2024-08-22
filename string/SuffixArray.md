@@ -104,3 +104,5 @@ struct SuffixArray {
 [Div3_943_G2](https://codeforces.com/contest/1968/problem/G2)
 
 [Edu_162_F](https://codeforces.com/contest/1923/problem/F)
+
+[Div2_741_E](https://codeforces.com/problemset/problem/1562/E)
