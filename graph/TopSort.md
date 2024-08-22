@@ -3,7 +3,7 @@
 $TopSort(adj)$：返回拓扑序，时间复杂度：队列： $O(n+m)$，小根堆： $O(nlogn+m)$。
 
 ```c++
-auto TopSort = [&](const vector<vector<int>> &adj)->vector<int> {
+auto TopSort = [&](const vector<vector<int>> &adj) {
     int n = adj.size() - 1;
     queue<int> q;
     for (int i = 1; i <= n; i++) if (!id[i]) q.push(i);
