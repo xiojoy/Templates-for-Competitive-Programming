@@ -51,3 +51,7 @@ struct AhoCorasick {
     }
 };
 ```
+
+例题：
+
+[Edu_134_E](https://codeforces.com/contest/1721/problem/E)
