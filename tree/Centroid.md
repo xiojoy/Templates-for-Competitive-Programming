@@ -3,8 +3,8 @@
 $get\\_centroid(adj)$：返回树的重心，时间复杂度： $O(n)$。
 
 ```c++
-auto get_centroid = [&](const vector<vector<int>> &adj)->int {
-    int cent = 0, val = INF, n = adj.size() - 1;
+auto get_centroid = [&](const vector<vector<int>> &adj) -> array<int, 2> {
+    int cent = 0, val = 1e9, n = adj.size() - 1;
     auto dfs = [&](auto self, int u, int fa)->int {
         int siz = 1, mx = 0;
         for (int v : adj[u]) {
@@ -14,10 +14,10 @@ auto get_centroid = [&](const vector<vector<int>> &adj)->int {
             }
         }
         mx = max(mx, n - siz);
-        if (mx <= val) cent = u, val = mx;
+        if (mx < val || (mx == val && u < cent)) cent = u, val = mx;
         return siz;
     };
     dfs(dfs, 1, 0);
-    return cent;
+    return {cent, val};
 };
 ```
