@@ -5,16 +5,23 @@
 $get\\_diameter(adj)$：返回树的直径，时间复杂度： $O(n)$。
 
 ```c++
-auto get_diameter = [&](const vector<vector<int>> &adj)->int {
+auto get_diameter = [&](const vector<vector<array<int, 2>>> &adj) {
+    constexpr int inf = 1e9;
     int n = adj.size() - 1;
-    auto BFS = [&](int u)->vector<int> {
-        vector<int> d(n + 1, INF);
+    auto BFS = [&](int u) {
+        vector<int> d(n + 1, inf);
         queue<int> q;
-        d[u] = 0, q.push(u);
+        d[u] = 0;
+        q.push(u);
         while (!q.empty()) {
             int u = q.front();
             q.pop();
-            for (auto [v, w] : adj[u]) if (d[v] == INF) d[v] = d[u] + w, q.push(v);
+            for (auto [v, w] : adj[u]) {
+                if (d[v] == inf) {
+                    d[v] = d[u] + w;
+                    q.push(v);
+                }
+            }
         }
         return d;
     };
@@ -29,20 +36,26 @@ auto get_diameter = [&](const vector<vector<int>> &adj)->int {
 法二（不限制边权）：以某点为根做树形 $DP$， $dp_{u,0}、dp_{u,1}$ 分别表示在以点 $u$ 为根的子树中，从根 $u$ 到叶子节点的最长和次长距离。
 
 ```c++
-auto get_diameter = [&](const vector<vector<int>> &adj)->int {
+auto get_diameter = [&](const vector<vector<array<int, 2>>> &adj) {
     vector<array<int, 2>> dp(n + 1);
     auto dfs = [&](auto self, int u, int fa)->void {
         for (auto [v, w] : adj[u]) {
             if (v != fa) {
                 self(self, v, u);
-                if (dp[v][0] + w > dp[u][0]) dp[u][1] = dp[u][0], dp[u][0] = dp[v][0] + w;
-                else if (dp[v][0] + w > dp[u][1]) dp[u][1] = dp[v][0] + w;
+                if (dp[v][0] + w > dp[u][0]) {
+                    dp[u] = {dp[v][0] + w, dp[u][0]};
+                }
+                else if (dp[v][0] + w > dp[u][1]) {
+                    dp[u][1] = dp[v][0] + w;
+                }
             }
         }
     };
     dfs(dfs, 1, 0);
     int d = INT_MIN;
-    for (int i = 1; i <= n; i++) d = max(d, dp[i][0] + dp[i][1]);
+    for (int i = 1; i <= n; i++) {
+        d = max(d, dp[i][0] + dp[i][1]);
+    }
     return d;
 };
 ```
