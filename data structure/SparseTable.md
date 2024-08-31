@@ -20,7 +20,7 @@ struct SparseTable {
     void work(vector<int> &a) {
         n = a.size() - 1;
         lg.resize(n + 1);
-        const int logn = __lg(n + 1);
+        const int logn = __lg(n);
         st.assign(n + 1, vector<int>(logn + 1));
         for (int i = 0; 1 << i <= n; i++) {
             lg[1 << i] = i;
