@@ -22,18 +22,17 @@ struct LinearBasis {
         }
         return !(flag = true);
     }
-    T max() {
-        T x = 0;
+    T max(T x = T()) {
         for (int i = d.size() - 1; ~i; i--) {
             if (d[i] && ~x >> i & 1) x ^= d[i];
         }
         return x;
     }
-    T min() {
-        if (flag) return 0;
-        for (int i = 0; i < d.size(); i++) {
-            if (d[i]) return d[i];
+    T min(T x = T()) {
+        for (int i = d.size() - 1; ~i; i--) {
+            if (d[i] && x >> i & 1) x ^= d[i];
         }
+        return x;
     }
     void rebuild() {
         for (int i = d.size() - 1; ~i; i--) {
