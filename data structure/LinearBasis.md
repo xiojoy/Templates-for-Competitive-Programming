@@ -4,6 +4,7 @@ struct LinearBasis {
     vector<T> d, p;
     bool flag = false;
 
+    LinearBasis() {}
     LinearBasis(int k) {
         init(k);
     }
@@ -29,9 +30,7 @@ struct LinearBasis {
         return x;
     }
     T min() {
-        if (flag) {
-            return 0;
-        }
+        if (flag) return 0;
         for (int i = 0; i < d.size(); i++) {
             if (d[i]) return d[i];
         }
