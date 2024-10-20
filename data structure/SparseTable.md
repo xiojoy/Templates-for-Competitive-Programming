@@ -46,5 +46,6 @@ struct SparseTable {
 
 例题：
 
+[模板题](https://www.luogu.com.cn/problem/P3865)
 [Div2_914_D2](https://codeforces.com/contest/1904/problem/D2)
 
